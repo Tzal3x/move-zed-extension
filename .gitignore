@@ -1,0 +1,5 @@
+.DS_Store
+*.move
+target/*
+extension.wasm
+grammars/
