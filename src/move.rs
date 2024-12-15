@@ -4,37 +4,17 @@ use zed_extension_api::{
     CodeLabel, CodeLabelSpan, LanguageServerId, Result,
 };
 
-struct MoveExtension {
-    cached_binary_path: Option<String>,
-}
+struct MoveExtension;
 
-impl zed::Extension for MoveExtension {
-    fn new() -> Self {
-        Self {
-            cached_binary_path: None,
-        }
-    }
-
+impl MoveExtension {
     fn language_server_command(
         &mut self,
-        _server_id: &zed::LanguageServerId,
+        _language_server_id: &zed::LanguageServerId,
         worktree: &zed::Worktree,
-    ) -> Result<zed::Command> {
-        if let Some(path) = worktree.which("move-analyzer") {
-            println!("move-analyzer found in PATH: {}", path);
-            return Ok(zed::Command {
-                command: path,
-                args: Default::default(),
-                env: worktree.shell_env(),
-            });
-        }
-
-        println!("move-analyzer not found in PATH, falling back to bundled binary");
-        Ok(zed::Command {
-            command: "move-analyzer".into(),
-            args: vec![],
-            env: Default::default(),
-        })
+    ) -> Result<String> {
+        worktree
+            .which("move-analyzer")
+            .ok_or("move-analyzer not found in PATH, falling back to bundled binary".to_string())
     }
 
     fn label_for_completion(
@@ -44,7 +24,7 @@ impl zed::Extension for MoveExtension {
     ) -> Option<CodeLabel> {
         match completion.kind? {
             CompletionKind::Function => {
-                let func = "func ";
+                let fun = "fun ";
                 let mut return_type = String::new();
 
                 if let Some(detail) = completion.detail {
@@ -53,12 +33,12 @@ impl zed::Extension for MoveExtension {
                     }
                 }
 
-                let before_braces = format!("{func}{}{return_type}", completion.label);
+                let before_braces = format!("{fun}{}{return_type}", completion.label);
                 let code = format!("{before_braces} {{}}");
 
                 Some(CodeLabel {
                     code,
-                    spans: vec![CodeLabelSpan::code_range(func.len()..before_braces.len())],
+                    spans: vec![CodeLabelSpan::code_range(fun.len()..before_braces.len())],
                     filter_range: (0..completion.label.find('(')?).into(),
                 })
             }
@@ -81,7 +61,7 @@ impl zed::Extension for MoveExtension {
                     }
                 }
 
-                let var = format!("var variable{type} = ");
+                let var = format!("let variable{type} = ");
                 let code = format!("{var}{}", completion.label);
 
                 Some(CodeLabel {
@@ -136,6 +116,32 @@ impl zed::Extension for MoveExtension {
             }
             _ => None,
         }
+    }
+}
+
+impl zed::Extension for MoveExtension {
+    fn new() -> Self {
+        Self {}
+    }
+
+    fn language_server_command(
+        &mut self,
+        server_id: &zed::LanguageServerId,
+        worktree: &zed::Worktree,
+    ) -> Result<zed::Command> {
+        Ok(zed::Command {
+            command: self.language_server_command(server_id, worktree)?,
+            args: vec![],
+            env: Default::default(),
+        })
+    }
+
+    fn label_for_completion(
+        &self,
+        server_id: &LanguageServerId,
+        completion: Completion,
+    ) -> Option<CodeLabel> {
+        self.label_for_completion(server_id, completion)
     }
 }
 

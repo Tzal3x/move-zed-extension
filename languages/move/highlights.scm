@@ -1,4 +1,3 @@
-;; highlights.scm
 ;; Highlights file for Move
 
 ;; Types
@@ -35,8 +34,8 @@
 (module_identity module: (module_identifier)  @namespace.module.name)
 
 ;; Function calls
-(call_expression access: (module_access module: (module_identifier)  @namespace.module.name))
-(call_expression access: (module_access member: (identifier)  @function.call))
+(call_expression (name_expression access: (module_access module: (module_identifier)  @namespace.module.name)))
+(call_expression (name_expression access: (module_access member: (identifier)  @function.call)))
 
 
 (label (identifier)  @label)
@@ -76,18 +75,22 @@
 (variant variant_name: (variant_identifier)  @constructor.name)
 
 ;; Packs
-(pack_expression access: (module_access)  @constructor.name)
+(pack_expression (name_expression access: (module_access)  @constructor.name))
 
 ;; Unpacks
 ;; TODO: go into variants
-(bind_unpack (module_access)  @type.name)
+(bind_unpack (name_expression)  @type.name)
 (module_access "$" (identifier)  @macro.variable)
 "$"  @macro.variable
 
 (module_access module: (module_identifier)  member: (identifier) @constructor.name)
 
+(abort_expression) @keyword
+(mut_ref) @keyword
+
 ;; Lambdas
-(lambda_bindings (bind_var (variable_identifier)  @variable.parameter))
+; (lambda_binding bind: (bind_var (variable_identifier)  @variable.parameter))
+; (lambda_bindings (bind_var (variable_identifier)  @variable.parameter))
 
 
 ;; Operators
@@ -124,8 +127,7 @@
  "struct"
  "use"
  "public"
- "public(package)"
- "public(friend)"
+ "package"
  "spec"
  "module"
  "abort"
