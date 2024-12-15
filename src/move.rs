@@ -43,7 +43,7 @@ impl MoveExtension {
                 })
             }
             CompletionKind::Variable => {
-                let var = "var ";
+                let var = "let ";
                 let code = format!("{var}{}: {}", completion.label, completion.detail?);
 
                 Some(CodeLabel {
