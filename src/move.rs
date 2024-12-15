@@ -132,7 +132,7 @@ impl zed::Extension for MoveExtension {
         Ok(zed::Command {
             command: self.language_server_command(server_id, worktree)?,
             args: vec![],
-            env: Default::default(),
+            env: worktree.shell_env(),
         })
     }
 
