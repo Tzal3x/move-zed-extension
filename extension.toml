@@ -1,6 +1,6 @@
 id = "move"
 name = "Move"
-version = "0.0.1"
+version = "1.1.0"
 schema_version = 1
 authors = [
     "Alexandros Tzimas <alex.tzimas@mystenlabs.com>",
