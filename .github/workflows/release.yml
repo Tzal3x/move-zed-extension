@@ -10,8 +10,7 @@ jobs:
     steps:
       - uses: huacnlee/zed-extension-action@v1
         with:
-          extension-name: move-zed-extension 
-          extension-path: extensions/${{ extension-name }}
+          extension-name: move 
           push-to: tzal3x/extensions
         env:
           # the personal access token should have "repo" & "workflow" scopes
