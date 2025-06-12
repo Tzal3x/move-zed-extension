@@ -36,6 +36,7 @@
 
 ;; Function calls
 (call_expression (name_expression access: (module_access module: (module_identifier)  @namespace.module.name)))
+; (call_expression (name_expression access: (module_access module: (module_identifier)  @functon.call)))
 (call_expression (name_expression access: (module_access member: (identifier)  @function.call)))
 
 
@@ -84,7 +85,16 @@
 (module_access "$" (identifier)  @macro.variable)
 "$"  @macro.variable
 
-(module_access module: (module_identifier)  member: (identifier) @constructor.name)
+"(" @punctuation.bracket
+")" @punctuation.bracket
+"|" @macro.call
+(dot_expression
+  access: (name_expression
+    (module_access
+      member: (identifier) @variable.parameter)))
+
+
+; (module_access module: (module_identifier)  member: (identifier) @constructor.name)
 
 (abort_expression) @keyword
 (mut_ref) @keyword
