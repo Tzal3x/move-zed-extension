@@ -16,7 +16,7 @@ impl MoveExtension {
     ) -> Result<String> {
         worktree
             .which("move-analyzer")
-            .ok_or("move-analyzer not found in PATH, falling back to bundled binary".to_string())
+            .ok_or("move-analyzer not found in PATH. Please install move-analyzer and ensure it's available in your PATH.".to_string())
     }
 
     fn label_for_completion(
