@@ -5,3 +5,6 @@
 (constant "const" @context name: (constant_identifier)  @name @constant.name) @item
 
 (enum_definition "enum" @context name: (_) @name) @item
+
+(macro_function_definition (modifier)* @context "macro" @context "fun" @context name: (function_identifier) @name) @item
+
