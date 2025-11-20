@@ -1,6 +1,6 @@
 (struct_definition "struct" @context name: (_) @name) @item
 
-(field_annotation field: (field_identifier) @name) @item
+(field_annotation field: (field_identifier) @name ":" @context type: (_) @context) @item
 
 (function_definition (modifier)? @context "fun" @context name: (function_identifier) @name) @item
 
