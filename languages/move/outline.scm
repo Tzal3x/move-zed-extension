@@ -8,3 +8,4 @@
 
 (macro_function_definition (modifier)* @context "macro" @context "fun" @context name: (function_identifier) @name) @item
 
+(module_definition "module" @context module_identity: (_) @name) @item
