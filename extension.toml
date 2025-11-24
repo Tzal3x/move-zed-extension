@@ -1,6 +1,6 @@
 id = "move"
 name = "Move"
-version = "0.0.3"
+version = "0.0.4"
 schema_version = 1
 authors = [
     "Alexandros Tzimas <alex.tzimas@mystenlabs.com>",
@@ -8,6 +8,7 @@ authors = [
 ]
 description = "Move language support for the zed editor."
 repository = "https://github.com/MystenLabs/move-zed-extension"
+snippets = "./snippets/move.json"
 
 [language_servers.move-language-server]
 name = "move"
