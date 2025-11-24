@@ -1,4 +1,13 @@
 {
+    "function": {
+        "prefix": "fun",
+        "body": [
+            "fun ${1:FUNCTION_NAME}(${2:ARGUMENTS}): ${3:RETURN_TYPE} {",
+            "    ${4: IMPLEMENTATION}",
+            "}$0"
+        ],
+        "description": "Creates a generic function"
+    },
     "one_time": {
         "prefix": "init",
         "body": [
