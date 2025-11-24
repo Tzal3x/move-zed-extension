@@ -14,6 +14,16 @@
     "test-function": {
         "prefix": "test",
         "body": [
+            "#[test]",
+            "public fun test_$1() {",
+            "    ${2:...};",
+            "}$0"
+        ],
+        "description": "Defines a test function that is expected to fail with a specific abort code."
+    },
+    "test-function-fail": {
+        "prefix": "test-expect-fail",
+        "body": [
             "#[test, expected_failure(abort_code = $1})]",
             "public fun ${2:test_will_error_and_fail}() {",
             "    ${3:1/0};",
