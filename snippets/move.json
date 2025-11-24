@@ -13,6 +13,16 @@
         ],
         "description": "Defines the init function including a One Time Witness type."
     },
+    "enum": {
+      "prefix": "enum",
+      "body": [
+          "public enum ${1:NAME} {",
+          "    ${2:VARIANT_1} { ${3:TODO} },",
+          "    ${4:VARIANT_2} { ${5:TODO} },",
+          "}$0"
+      ],
+      "description": "Defines an enum type with variants."
+    },
     "struct": {
         "prefix": "struct",
         "body": ["public struct ${1:NAME} has ${2:ABILITIES} { ${3:TODO} }$0"],
