@@ -1,4 +1,18 @@
 {
+    "one_time": {
+        "prefix": "init",
+        "body": [
+            "/// The One Time Witness (OTW) type should be named after the module with all uppercase letters.",
+            "/// Only `drop`, no fields, no generics, all uppercase.",
+            "public struct ${1:MODULE_NAME_ALL_CAPS} has drop {}",
+            "",
+            "fun init(otw: OTW, ctx: &mut TxContext) {",
+            "    // do something with the OTW",
+            "    ${2:TODO}$0",
+            "}"
+        ],
+        "description": "Defines the init function including a One Time Witness type."
+    },
     "struct": {
         "prefix": "struct",
         "body": ["public struct ${1:NAME} has ${2:ABILITIES} { ${3:TODO} }$0"],
