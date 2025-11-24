@@ -1,41 +1,51 @@
 {
-    "If-else block": {
+    "struct": {
+        "prefix": "struct",
+        "body": ["public struct ${1:NAME} has ${2:ABILITIES} { ${3:TODO} }$0"],
+        "description": "Defines a public struct."
+    },
+    "struct with key definition": {
+        "prefix": "struct-has-key",
+        "body": ["public struct ${1:NAME} has key { id: UID }"],
+        "description": "Defines a public struct with the \"key\" ability."
+    },
+    "if-else block": {
         "prefix": "ifelse",
-        "body": ["if (${1:condition}){\n    ${2:TODO}\n} else {\n    ${3:TODO}\n}$0"],
+        "body": ["if (${1:CONDITION}){\n    ${2:TODO}\n} else {\n    ${3:TODO}\n}$0"],
         "description": "Evaluates if a condition is true or false."
     },
-    "If-else-if block": {
+    "if-else-if block": {
         "prefix": "ifelseif",
         "body": [
-            "if (${1:condition}){\n    ${2:TODO}\n} else if (${2:condition}){\n    ${2:TODO}\n}$0"
+            "if (${1:CONDITION}){\n    ${2:TODO}\n} else if (${2:CONDITION}){\n    ${2:TODO}\n}$0"
         ],
         "description": "Evaluates if a certain condition is true, otherwise it evaluates another one."
     },
     "loop": {
         "prefix": "loop",
-        "body": ["loop {\n    if (${1:condition}) break;\n};$0"],
+        "body": ["loop {\n    if (${1:CONDITION}) break;\n};$0"],
         "description": "Executes a block of code repeatedly as long as the condition is true."
     },
     "loop-labeled": {
         "prefix": "loop-labeled",
-        "body": ["'a: loop {\n    if (${1:condition}) break 'a;\n    ${2:TODO}\n};$0"],
+        "body": ["'a: loop {\n    if (${1:CONDITION}) break 'a;\n    ${2:TODO}\n};$0"],
         "description": "Executes a labeled loop, allowing for breaking out of the loop with the label."
     },
     "loops-labeled-nested": {
         "prefix": "loops-labeled-nested",
         "body": [
-            "'outer: loop {\n    'inner: loop {\n        if (${1:condition}) break 'outer;\n        if (${2:condition}) break 'inner;\n        ${3:TODO}\n    }\n    ${4:TODO}\n};$0"
+            "'outer: loop {\n    'inner: loop {\n        if (${1:CONDITION}) break 'outer;\n        if (${2:CONDITION}) break 'inner;\n        ${3:TODO}\n    }\n    ${4:TODO}\n};$0"
         ],
         "description": "Executes nested labeled loops, allowing for breaking out of specific loops using their labels."
     },
     "while": {
         "prefix": "while",
-        "body": ["let i = 0;\nwhile (i < ${1:n}) {\n    ${2:TODO}\n};$0"],
+        "body": ["let i = 0;\nwhile (i < ${1:N}) {\n    ${2:TODO}\n};$0"],
         "description": "Executes a block of code repeatedly as long as the condition is true."
     },
     "while-labeled": {
         "prefix": "while-labeled",
-            "body": ["let i = 0;\n'a: while (i < ${1:n}) {\n    if (${2:condition}) break 'a\n};$0"],
+            "body": ["let i = 0;\n'a: while (i < ${1:N}) {\n    if (${2:CONDITION}) break 'a\n};$0"],
         "description": "Executes a block of code repeatedly as long as the condition is true."
-    }    
+    }
 }
