@@ -3,10 +3,10 @@
         "prefix": "fun",
         "body": [
             "fun ${1:FUNCTION_NAME}(${2:ARGUMENTS}): ${3:RETURN_TYPE} {",
-            "    ${4: IMPLEMENTATION}",
+            "    ${4: TODO}",
             "}$0"
         ],
-        "description": "Creates a generic function"
+        "description": "Creates function."
     },
     "one_time": {
         "prefix": "init",
@@ -23,14 +23,14 @@
         "description": "Defines the init function including a One Time Witness type."
     },
     "enum": {
-      "prefix": "enum",
-      "body": [
-          "public enum ${1:NAME} {",
-          "    ${2:VARIANT_1} { ${3:TODO} },",
-          "    ${4:VARIANT_2} { ${5:TODO} },",
-          "}$0"
-      ],
-      "description": "Defines an enum type with variants."
+        "prefix": "enum",
+        "body": [
+            "public enum ${1:NAME} {",
+            "    ${2:VARIANT_1} { ${3:TODO} },",
+            "    ${4:VARIANT_2} { ${5:TODO} },",
+            "}$0"
+        ],
+        "description": "Defines an enum type with variants."
     },
     "struct": {
         "prefix": "struct",
@@ -78,7 +78,7 @@
     },
     "while-labeled": {
         "prefix": "while-labeled",
-            "body": ["let i = 0;\n'a: while (i < ${1:N}) {\n    if (${2:CONDITION}) break 'a\n};$0"],
+        "body": ["let i = 0;\n'a: while (i < ${1:N}) {\n    if (${2:CONDITION}) break 'a\n};$0"],
         "description": "Executes a block of code repeatedly as long as the condition is true."
     }
 }
