@@ -12,6 +12,12 @@ For this, just run the following command:
 cargo install --git https://github.com/MystenLabs/sui  sui-move-lsp
 ```
 
+Make sure that the `move-analyser` is added in your `PATH`:
+
+```bash
+echo 'export PATH="$HOME/.cargo/bin/move-analyzer:$PATH"' >> ~/.zshrc && source ~/.zshrc
+```
+
 ## About Move
 
 Move is an open source language for writing safe packages to manipulate on-chain objects
